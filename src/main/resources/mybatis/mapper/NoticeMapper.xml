@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.NoticeMapper">
+
+    <!--查看公告所有信息-->
+    <select id="queryAllNotice" resultType="Notice">
+        select * from  notice
+    </select>
+    <!--根据ID查询一条公告-->
+    <select id="queryNoticeById" resultType="Notice">
+        select * from  notice where noticeId=#{noticeId}
+    </select>
+    <!--添加一条公告-->
+    <insert id="addNotice" parameterType="Notice">
+        insert into  notice(title, content,creatTime) values (#{title},#{content},#{creatTime});
+    </insert>
+    <!--删除一条公告-->
+    <delete id="deleteNotice" parameterType="Integer">
+        delete from  notice where noticeId=#{noticeId}
+    </delete>
+    <!--修改一条公告-->
+    <update id="updateNotice" parameterType="Notice" >
+        update  notice set title=#{title},content=#{content},creatTime=#{creatTime}
+        where noticeId=#{noticeId}
+    </update>
+
+    <!--查看最新公告的内容-->
+    <select id="queryNewNoticeById" resultType="Notice">
+        SELECT * FROM notice WHERE noticeId=(SELECT MAX(noticeId) FROM notice )
+    </select>
+
+</mapper>

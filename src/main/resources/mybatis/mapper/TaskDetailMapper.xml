@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.TaskDetailMapper">
+
+    <!--查看所有进度详情信息-->
+    <select id="queryAllTaskDetail" resultType="com.example.pojo.TaskDetail">
+        select * from  task_detail
+    </select>
+    <!--根据ID查询一条进度详情-->
+    <select id="queryTaskDetailById" resultType="com.example.pojo.TaskDetail">
+        select * from  task_detail where id=#{id}
+    </select>
+
+    <select id="countByTask" resultType="java.lang.Integer">
+        select count(*) from task_detail
+        <where>
+            <if test="id != null">
+                taskId = #{id} AND
+            </if>
+            <if test="type == 'listen'">
+                businessId IN (select listenId from listen) AND
+            </if>
+            <if test="type == 'book'">
+                businessId IN (select bookId from book) AND
+            </if>
+            <if test="type == 'word'">
+                businessId IN (select wordId from word) AND
+            </if>
+            1 = 1
+        </where>
+    </select>
+
+    <!--添加一条进度详情-->
+    <insert id="addTaskDetail" parameterType="com.example.pojo.TaskDetail">
+        insert into  task_detail(businessId, taskId) values (#{businessId},#{taskId});
+    </insert>
+    <!--删除一条进度详情-->
+    <delete id="deleteTaskDetail" parameterType="Integer">
+        delete from  task_detail where id=#{id}
+    </delete>
+    <delete id="deleteTaskDetailByTaskIdAndBusinessId">
+        delete from  task_detail where businessId=#{businessId} AND taskId=#{taskId}
+    </delete>
+    <!--修改一条进度详情-->
+    <update id="updateTaskDetail" parameterType="com.example.pojo.TaskDetail">
+        update task_detail set businessId=#{businessId},taskId=#{taskId}
+        where id=#{id}
+    </update>
+
+
+</mapper>

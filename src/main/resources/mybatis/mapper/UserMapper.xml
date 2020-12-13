@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.UserMapper">
+    <!--  增加用户-->
+    <insert id="addUser" parameterType="User">
+        insert into  user (userName, password, email, activeCode,activeStatus,role) values (#{userName},#{password},#{email},#{activeCode},#{activeStatus},#{role});
+    </insert>
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="Integer">
+        delete from  user where userId=#{userId}
+    </delete>
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="User">
+        update  user set userName=#{userName},  activeStatus=#{activeStatus}, email=#{email},password=#{password},role=#{role}  where userId=#{userId} ;
+    </update>
+    <!--查看所有用户信息-->
+    <select id="queryAllUser" resultType="User">
+        select * from  user
+    </select>
+
+
+    <!-- 根据激活码查询用户-->
+    <select id="queryUserByActiveCode" resultType="User">
+        select * from   user where activeCode=#{activeCode}
+    </select>
+
+    <!-- 普通用户登录，根据账号密码和状态码(1)登录-->
+    <select id="loginByUserNameAndPasswordAndActiveStatus" resultType="User">
+        select * from  user  where  (user.email=#{userName} or user.userName = #{userName} ) and password=#{password} and activeStatus=1
+    </select>
+    <!--管理员登录，根据账号密码和Role(1)登录-->
+    <select id="AdminLogin" resultType="User">
+        select * from  user  where  (user.email=#{email} or user.userName = #{email}) and password=#{password} and role=1
+    </select>
+
+    <!--根据Id查询用户-->
+    <select id="queryUserById" resultType="User">
+    select * from  user where userId=#{userId}
+     </select>
+
+    <select id="findByUserName" resultType="com.example.pojo.User">
+            select * from  user where userName=#{userName}
+    </select>
+    <select id="findByEmail" resultType="com.example.pojo.User">
+            select * from  user where email=#{email}
+    </select>
+    <select id="findByUserNameAndEmail" resultType="com.example.pojo.User">
+            select * from  user where userName=#{userName} AND email = #{email}
+    </select>
+
+
+</mapper>

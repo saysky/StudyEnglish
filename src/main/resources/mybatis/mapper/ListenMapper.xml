@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.ListenMapper">
+
+    <!--查看所有听力信息-->
+    <select id="queryAllListen" resultType="Listen">
+        select * from  listen
+    </select>
+    <!--根据ID查询一条听力-->
+    <select id="queryListenById" resultType="Listen">
+        select * from  listen where listenId=#{listenId}
+    </select>
+    <select id="countByGrade" resultType="java.lang.Integer">
+        select count(*) from listen where grade = #{grade}
+    </select>
+    <!--添加一条听力-->
+    <insert id="addListen" parameterType="Listen">
+        insert into  listen(listenName,grade) values (#{listenName},#{grade},#{content});
+    </insert>
+    <!--删除一条听力-->
+    <delete id="deleteListen" parameterType="Integer">
+        delete from  listen where listenId=#{listenId}
+    </delete>
+    <!--修改一条听力-->
+    <update id="updateListen" parameterType="Listen" >
+        update  listen set listenName=#{listenName},grade=#{grade},content=#{content}
+        where listenId=#{listenId}
+    </update>
+
+
+    <select id="getNext" resultType="com.example.pojo.Listen">
+        select * from listen
+        <where>
+            listenId not in (select businessId from task_detail where taskId = #{taskId})
+        </where>
+        LIMIT 1
+    </select>
+
+
+    <select id="getAllGrade" resultType="com.example.pojo.Grade">
+        select * from grade where gradeId IN (select grade from listen)
+    </select>
+</mapper>

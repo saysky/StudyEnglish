@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.GradeMapper">
+
+    <!--查看所有等级信息-->
+    <select id="queryAllGrade" resultType="Grade">
+        select * from  grade
+    </select>
+    <!--根据ID查询一等级-->
+    <select id="queryGradeById" resultType="Grade">
+        select * from  grade where gradeId=#{gradeId}
+    </select>
+    <!--添加一个等级-->
+    <insert id="addGrade" parameterType="Grade">
+        insert into  grade(gradeId, gradeName) values (#{gradeId},#{gradeName});
+    </insert>
+    <!--删除一个等级-->
+    <delete id="deleteGrade" parameterType="Integer">
+        delete from  grade where gradeId=#{gradeId}
+    </delete>
+    <!--修改一个等级-->
+    <update id="updateGrade" parameterType="Grade" >
+        update  grade set gradeName=#{gradeName}
+        where gradeId=#{gradeId}
+    </update>
+
+
+</mapper>

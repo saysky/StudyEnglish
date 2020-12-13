@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.WordMapper">
+
+    <!--
+    #######################################################
+                        增加
+    #######################################################
+    -->
+    <!--增加一个单词-->
+    <insert id="addWord" parameterType="Word">
+        insert into  word(wordName, audio, explanation, example, grade) values (#{wordName},#{audio},#{explanation},#{example},#{grade});
+    </insert>
+
+    <!--
+    #######################################################
+                        删除
+    #######################################################
+    -->
+    <!--删除一个单词-->
+    <delete id="deleteWord" parameterType="Integer">
+        delete from  word where wordId=#{wordId}
+    </delete>
+
+    <!--
+    #######################################################
+                        修改
+    #######################################################
+    -->
+    <!--修改一个单词-->
+    <update id="updateWord" parameterType="Word">
+        update  word set
+        wordName=#{wordName},audio=#{audio},explanation=#{explanation},example=#{example},grade=#{grade}
+        where wordId=#{wordId};
+    </update>
+
+    <!--
+    #######################################################
+                        查看
+    #######################################################
+    -->
+    <!--查询所有单词信息-->
+    <select id="queryAllWord" resultType="com.example.pojo.Word">
+        select * from  word
+    </select>
+
+    <!--根据ID查询一个单词的信息-->
+    <select id="queryWordById" resultType="com.example.pojo.Word">
+        select * from  word where wordId=#{wordId}
+    </select>
+
+    <!--根据grade查询所有的单词数量 -->
+    <select id="queryAllWordNumberByGrade" resultType="int">
+         SELECT COUNT(wordId) FROM  word where grade=#{grade};
+    </select>
+
+
+    <select id="queryByGradeId" resultType="com.example.pojo.Word">
+        select * from word where grade = #{gradeId}
+        <if test="limit != null and limit != 0">
+           limit #{limit}
+        </if>
+    </select>
+    <select id="findByInitWord" resultType="com.example.pojo.Word">
+        select * from word where wordName like '${initWord}%'
+        <if test="limit != null and limit != 0">
+            limit #{limit}
+        </if>
+    </select>
+    <select id="getNext" resultType="com.example.pojo.Word">
+        select * from word
+        <where>
+            wordId not in (select businessId from task_detail where taskId = #{taskId})
+        </where>
+        LIMIT 1
+    </select>
+
+    <select id="getAllGrade" resultType="com.example.pojo.Grade">
+        select * from grade where gradeId IN (select grade from word)
+    </select>
+    <select id="queryWordByName" resultType="com.example.pojo.Word">
+        select * from word where wordName like '%${name}%'
+    </select>
+
+</mapper>

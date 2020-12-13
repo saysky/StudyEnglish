@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.TaskMapper">
+
+    <!--查看所有进度信息-->
+    <select id="queryAllTask" resultType="com.example.pojo.Task">
+        select * from  task
+    </select>
+    <!--根据ID查询一条进度-->
+    <select id="queryTaskById" resultType="com.example.pojo.Task">
+        select * from  task where id=#{id}
+    </select>
+    <select id="findByUserId" resultType="com.example.pojo.Task">
+        select * from  task where userId=#{userId}
+    </select>
+
+
+    <!--添加一条进度-->
+    <insert id="addTask" parameterType="com.example.pojo.Task">
+        insert into  task(name,type, grade, userId) values (#{name},#{type},#{grade},#{userId});
+    </insert>
+    <!--删除一条进度-->
+    <delete id="deleteTask" parameterType="Integer">
+        delete from  task where id=#{id}
+    </delete>
+    <!--修改一条进度-->
+    <update id="updateTask" parameterType="com.example.pojo.Task">
+        update task set name=#{name},userId=#{userId},grade=#{grade},type=#{type}
+        where id=#{id}
+    </update>
+
+
+</mapper>

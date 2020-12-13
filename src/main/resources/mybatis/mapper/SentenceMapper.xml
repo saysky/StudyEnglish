@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.SentenceMapper">
+
+    <!--查看所有句子信息-->
+    <select id="queryAllSentence" resultType="Sentence">
+        select * from  sentence
+    </select>
+    <!--根据ID查询一条句子-->
+    <select id="querySentenceById" resultType="Sentence">
+        select * from  sentence where sentenceId=#{sentenceId}
+    </select>
+    <!--添加一条句子-->
+    <insert id="addSentence" parameterType="Sentence">
+        insert into  sentence(sentenceName, explain) values (#{sentenceName},#{explain});
+    </insert>
+    <!--删除一条句子-->
+    <delete id="deleteSentence" parameterType="Integer">
+        delete from  sentence where sentenceId=#{sentenceId}
+    </delete>
+    <!--修改一条句子-->
+    <update id="updateSentence" parameterType="Sentence" >
+        update  sentence set sentenceName=#{sentenceName},explain=#{explain}
+        where sentenceId=#{sentenceId}
+    </update>
+    <!--随机查询一条句子-->
+    <select id="queryRandomSentence" resultType="Sentence">
+        SELECT * FROM sentence  ORDER BY RAND() limit 1
+    </select>
+
+
+
+</mapper>

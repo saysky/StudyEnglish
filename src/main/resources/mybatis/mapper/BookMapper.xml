@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace：绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.mapper.BookMapper">
+
+    <!--查看所有书信息-->
+    <select id="queryAllBook" resultType="Book">
+        select * from  book
+    </select>
+    <!--根据ID查询一条书-->
+    <select id="queryBookById" resultType="Book">
+        select * from  book where bookId=#{bookId}
+    </select>
+    <select id="countByGrade" resultType="java.lang.Integer">
+        select count(*) from book where grade = #{grade}
+    </select>
+    <!--添加一本书-->
+    <insert id="addBook" parameterType="Book">
+        insert into  book(bookName, bookUser,description,content,grade) values (#{bookName},#{bookUser},#{description},#{content},#{grade});
+    </insert>
+    <!--删除一本书-->
+    <delete id="deleteBook" parameterType="Integer">
+        delete from  book where bookId=#{bookId}
+    </delete>
+    <!--修改一本书-->
+    <update id="updateBook" parameterType="Book" >
+        update  book set bookName=#{bookName},bookUser=#{bookUser},description=#{description},content=#{content},grade=#{grade}
+        where bookId=#{bookId}
+    </update>
+
+    <select id="getNext" resultType="com.example.pojo.Book">
+        select * from book
+        <where>
+            bookId not in (select businessId from task_detail where taskId = #{taskId})
+        </where>
+        LIMIT 1
+    </select>
+
+    <select id="getAllGrade" resultType="com.example.pojo.Grade">
+        select * from grade where gradeId IN (select grade from book)
+    </select>
+</mapper>
