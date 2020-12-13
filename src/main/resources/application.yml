@@ -1,10 +1,9 @@
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/study_english?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
-#    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
 
 
   mvc:
@@ -16,7 +15,7 @@ spring:
   mail:
     host: smtp.qq.com
     username: 847064370@qq.com  # 邮箱地址
-    password: dysdnwddapztbbhf    # 授权码
+    password: XXXXX    # 授权码
     properties:
       mail:
         smtp:
