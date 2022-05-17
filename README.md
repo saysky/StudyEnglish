@@ -1,3 +1,4 @@
+最新消息，新增学习进度，学习统计图，单词复习，生词本 (新功能)，后台查询功能
 # 功能介绍
 基于SpringBoot+MyBatis+Thymeleaf实现英语学习系统。
 
@@ -8,14 +9,15 @@
     - 听力模块：用户可以进行听力练习
     - 学习进度模块：用户可以查看学习进度。
     - 名人名言模块：首页显示英语名人名言。
+	- 学习进度，学习统计图，单词复习，生词本 (新功能)
 - 后台管理端包括：用户管理，单词管理，书籍管理，主页管理。
     - 管理员可以通过进入后台页面可以进行添加用户的操作，还可以进行编辑和删除用户的操作。在单词管理和书籍管理中，管理员可以对单词库中的单词进行增加、删除和修改。
 
 
-详细介绍：[https://liuyanzhao.com/shop/1317668426088583168.html](https://liuyanzhao.com/shop/1317668426088583168.html) <br/>
-预览地址：[https://english.liuyanzhao.com](https://english.liuyanzhao.com)
+详细介绍：[https://liuyanzhao.com/shop/study-english.html](https://liuyanzhao.com/shop/study-english.html) <br/>
+预览地址：[https://english.liuyanzhao.com](https://english.liuyanzhao.com) 账号admin密码123456
 
-开发时间 2020年10月17日 <br/>
+2022年4月最新更新
 ## 技术组成
 - SpringBoot
 - MyBatis
@@ -26,27 +28,55 @@
 - 说明：本系统没有使用较复杂的框架，代码容易理解。
 
 ## 预览
+1-首页.png
 ![1-首页.png](img/1-首页.png)
+2-单词详情.png
 ![2-单词详情.png](img/2-单词详情.png)
+2-学习任务统计图(新).png
+![2-学习任务统计图(新).png](img/2-学习任务统计图(新).png)
+2-学习任务进度(新).png
+![2-学习任务进度(新).png](img/2-学习任务进度(新).png)
+3-单词搜索.png
 ![3-单词搜索.png](img/3-单词搜索.png)
+4-阅读列表.png
 ![4-阅读列表.png](img/4-阅读列表.png)
+5-阅读详情.png
 ![5-阅读详情.png](img/5-阅读详情.png)
+6-听力列表.png
 ![6-听力列表.png](img/6-听力列表.png)
+7-听力详情.png
 ![7-听力详情.png](img/7-听力详情.png)
+8-公告列表.png
 ![8-公告列表.png](img/8-公告列表.png)
+9-用户中心-学习进度.png
 ![9-用户中心-学习进度.png](img/9-用户中心-学习进度.png)
+10-添加学习任务.png
 ![10-添加学习任务.png](img/10-添加学习任务.png)
+11-听力前往学习.png
 ![11-听力前往学习.png](img/11-听力前往学习.png)
+12-阅读前往学习.png
 ![12-阅读前往学习.png](img/12-阅读前往学习.png)
+13-单词前往学习.png
 ![13-单词前往学习.png](img/13-单词前往学习.png)
+14-登录页面.png
 ![14-登录页面.png](img/14-登录页面.png)
+15-注册页面.png
 ![15-注册页面.png](img/15-注册页面.png)
+16-忘记密码页面.png
 ![16-忘记密码页面.png](img/16-忘记密码页面.png)
+17-管理员单词管理(新).png
+![17-管理员单词管理(新).png](img/17-管理员单词管理(新).png)
+17-管理员单词管理.png
 ![17-管理员单词管理.png](img/17-管理员单词管理.png)
+18-单词编辑.png
 ![18-单词编辑.png](img/18-单词编辑.png)
+19-书籍管理.png
 ![19-书籍管理.png](img/19-书籍管理.png)
+20-书籍编辑.png
 ![20-书籍编辑.png](img/20-书籍编辑.png)
+21-用户管理.png
 ![21-用户管理.png](img/21-用户管理.png)
+22-公告管理.png
 ![22-公告管理.png](img/22-公告管理.png)
 
 
@@ -57,8 +87,5 @@
 同时也提供部署或讲解服务  <br/>
 微信/QQ：847064370 <br/>
 Email: 847064370@qq.com
-[博主博客主页](https://liuyanzhao.com) <br/>
+[博主博客主页](https://liuyanzhao.com/shop.html) <br/>
 
-## 日志
-- 2020/12/12
-- 完成以上功能的开发
