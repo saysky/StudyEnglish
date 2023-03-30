@@ -15,7 +15,7 @@
 
 
 详细介绍：[https://liuyanzhao.com/shop/study-english.html](https://liuyanzhao.com/shop/study-english.html) <br/>
-预览地址：[https://english.liuyanzhao.com](https://english.liuyanzhao.com) 账号admin密码123456
+预览地址：[http://english.liuyanzhao.com](http://english.liuyanzhao.com) 账号admin密码123456
 
 2022年4月最新更新
 ## 技术组成
