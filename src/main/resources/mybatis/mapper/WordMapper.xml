@@ -85,4 +85,3 @@
         select * from word where wordName like '%${name}%'
     </select>
 
-</mapper>

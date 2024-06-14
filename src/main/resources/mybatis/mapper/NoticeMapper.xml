@@ -32,4 +32,3 @@
         SELECT * FROM notice WHERE noticeId=(SELECT MAX(noticeId) FROM notice )
     </select>
 
-</mapper>

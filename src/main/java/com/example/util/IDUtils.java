@@ -17,4 +17,3 @@ public class IDUtils {
         System.out.println(getUUID());
         logger.debug("test");
     }
-}

@@ -75,4 +75,3 @@ public class UpdateUserController {
 
         return "redirect:/admin/viewUser";
     }
-}

@@ -43,4 +43,3 @@
     <select id="getAllGrade" resultType="com.example.pojo.Grade">
         select * from grade where gradeId IN (select grade from listen)
     </select>
-</mapper>
